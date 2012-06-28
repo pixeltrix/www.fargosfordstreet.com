@@ -1,0 +1,150 @@
+/* @override http://fargosfordstreet.local/wp-content/themes/fargo/placeholder.css */
+
+html {
+	height: 100%;
+}
+body {
+	background: #054c1d url(images/placeholder/background.png) repeat-x left top;
+	color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 1.3333em;
+	height: 100%;
+	margin: 0px;
+}
+.container {
+	margin: 0px auto;
+	width: 972px;
+}
+.columns {
+	overflow: hidden;
+	padding: 0px 54px;
+}
+.columns .column {
+	float: left;
+	width: 36px;
+	padding: 0px 18px;
+}
+.columns .span_3 {
+	width: 180px;
+}
+.columns .span_4 {
+	width: 252px;
+}
+.columns .span_6 {
+	width: 396px;
+}
+.columns .span_8 {
+	width: 540px;
+}
+.columns .span_9 {
+	width: 612px;
+}
+.columns .span_12 {
+	width: 828px;
+}
+#wrapper {
+	min-height: 100%;
+	position: relative;
+}
+#header {
+	background: url(images/placeholder/header.png) no-repeat left top;
+	height: 380px;
+	position: relative;
+}
+#site-title {
+	margin: 0;
+	position: absolute;
+	left: 20px;
+	top: 39px;
+}
+#site-title a {
+	background: url(images/placeholder/logo.png);
+	display: block;
+	width: 228px;
+	height: 109px;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+#content {
+	padding: 0 0 204px 0;
+}
+#content p.intro {
+	color: #bdce00;
+	font-family: museo-slab, Courier New, sans-serif;
+	font-size: 1.3125em;
+	line-height: 1.3333em;
+	font-weight: bold;
+	margin: 0 0 0 0;
+}
+#content h2 {
+	color: #bdce00;
+	font-size: 1.75em;
+	line-height: 1.4em;
+	font-family: museo-slab, Courier New, sans-serif;
+	font-weight: bold;
+	margin: 24px 0 0px 0;
+}
+#content p {
+	margin: 0 0 18px 0;
+	font-size: 1em;
+	line-height: 1.4em;
+}
+#footer {
+	background: #bdce00;
+	color: #054c1d;
+	height: 108px;
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	overflow: hidden;
+	font-family: museo-slab, Courier New, sans-serif;
+	font-size: 0.75em;
+	line-height: 1.4em;
+	padding: 36px 0;
+}
+#footer p.address {
+	font-weight: bold;
+	margin: 0 0 6px 0;
+}
+#footer dl.contact {
+	margin: 0;
+}
+#footer dl.contact dt {
+	font-weight: bold;
+	margin: 6px 0 0 0;
+}
+#footer dl.contact dd {
+	margin: 0;
+}
+#footer dl.contact dd a {
+	color: #054c1d;
+}
+#footer ul.logos {
+	background: url(images/placeholder/logos.png) no-repeat left top;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	width: 612px;
+	height: 108px;
+	overflow: hidden;
+	position: relative;
+}
+#footer ul.logos li {
+	position: absolute;
+}
+#footer ul.logos li a {
+	display: block;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+#footer ul.logos li.ccc { left: 0px; top: 47px; }
+#footer ul.logos li.ccc a { width: 94px; height: 57px; }
+#footer ul.logos li.cdp { left: 149px; top: 48px; }
+#footer ul.logos li.cdp a { width: 90px; height: 60px; }
+#footer ul.logos li.erdf { left: 298px; top: 58px; }
+#footer ul.logos li.erdf a { width: 163px; height: 42px; }
+#footer ul.logos li.hlf { left: 517px; top: 53px; }
+#footer ul.logos li.hlf a { width: 95px; height: 52px; }
