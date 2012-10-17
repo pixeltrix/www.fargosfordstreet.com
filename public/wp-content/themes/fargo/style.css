@@ -101,6 +101,7 @@ body {
 	position: absolute;
 	min-width: 180px;
 	display: none;
+	z-index: 200;
 }
 #navigation ul.sub-menu > li > a {
 	font-family: museo-slab, Courier New, sans-serif;
