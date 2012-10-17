@@ -131,6 +131,44 @@ body {
 	white-space: nowrap;
 	overflow: hidden;
 }
+#gallery {
+	margin: 0;
+	position: relative;
+}
+#gallery div.images {
+	height: 328px;
+	overflow: hidden;
+}
+#gallery div.images div {
+	height: 520px;
+	position: absolute;
+	display: none;
+	left: 0;
+	top: 0;
+}
+#gallery div.images div img {
+	display: block;
+}
+#gallery div.tabs {
+	position: absolute;
+	height: 12px;
+	right: 16px;
+	bottom: 16px;
+	z-index: 100;
+}
+#gallery div.tabs a {
+	background-color: #ffffff;
+	float: left;
+	width: 12px;
+	height: 12px;
+	margin: 0 0 0 16px;
+}
+#gallery div.tabs a:hover {
+	background-color: #bdce00;
+}
+#gallery div.tabs a.current {
+	background-color: #054c1d;
+}
 #content {
 	background-color: #ffffff;
 	color: #444444;
@@ -141,6 +179,22 @@ body {
 	width: 900px;
 	font-size: 0.875em;
 	line-height: 1.4em;
+}
+#content #banner {
+	margin: 24px 36px;
+	font-family: museo-slab, Courier New, sans-serif;
+}
+#content #banner h1 {
+	color: #054c1d;
+	margin: 0;
+	font-size: 2.5em;
+	line-height: 1em;
+}
+#content #banner h2 {
+	color: #bdce00;
+	margin: 0;
+	font-size: 2.5em;
+	line-height: 1em;
 }
 #content div.columns {
 	padding: 0px 18px;
