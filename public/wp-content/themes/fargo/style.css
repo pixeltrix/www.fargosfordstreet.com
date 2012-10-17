@@ -56,8 +56,65 @@ body {
 }
 #header {
 	background: url(images/header.png) no-repeat left top;
-	height: 380px;
+	height: 364px;
 	position: relative;
+}
+#navigation ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#navigation > ul.menu {
+	height: 36px;
+	padding: 0 54px;
+}
+#navigation > ul.menu > li {
+	float: left;
+	text-align: center;
+	height: 36px;
+	margin: 0 18px;
+}
+#navigation > ul.menu > li > a {
+	color: #ffffff;
+	display: block;
+	width: 180px;
+	height: 36px;
+	line-height: 36px;
+	text-decoration: none;
+	font-family: museo-slab, Courier New, sans-serif;
+	font-size: 1.125em;	
+}
+#navigation > ul.menu > li:hover > a,
+#navigation > ul.menu > li.current-menu-ancestor > a,
+#navigation > ul.menu > li.current-menu-item > a,
+#navigation > ul.menu > li > a:hover {
+	background: #bdce00;
+	color: #054c1d;
+}
+#navigation > ul.menu > li:hover ul.sub-menu {
+	display: block;
+}
+#navigation ul.sub-menu {
+	background: #bdce00;
+	text-align: left;
+	padding: 6px 0;
+	position: absolute;
+	min-width: 180px;
+	display: none;
+}
+#navigation ul.sub-menu > li > a {
+	font-family: museo-slab, Courier New, sans-serif;
+	font-size: 1em;
+	text-decoration: none;
+}
+#navigation ul.sub-menu > li > a {
+	color: #054c1d;
+	padding: 6px 18px;
+	display: block;
+}
+#navigation ul.sub-menu > li > a:hover {
+	background: #054c1d;
+	color: #ffffff;
 }
 #site-title {
 	margin: 0;
@@ -75,28 +132,12 @@ body {
 	overflow: hidden;
 }
 #content {
-	padding: 0 0 204px 0;
-}
-#content p.intro {
-	color: #bdce00;
-	font-family: museo-slab, Courier New, sans-serif;
-	font-size: 1.3125em;
-	line-height: 1.3333em;
-	font-weight: bold;
-	margin: 0 0 0 0;
-}
-#content h2 {
-	color: #bdce00;
-	font-size: 1.75em;
-	line-height: 1.4em;
-	font-family: museo-slab, Courier New, sans-serif;
-	font-weight: bold;
-	margin: 24px 0 0px 0;
-}
-#content p {
-	margin: 0 0 18px 0;
-	font-size: 1em;
-	line-height: 1.4em;
+	background-color: #ffffff;
+	border-top: 12px solid #bdce00;
+	padding: 0 0 180px 0;
+	margin: 0px auto;
+	min-height: 180px;
+	width: 828px;
 }
 #footer {
 	background: #bdce00;
