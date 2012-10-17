@@ -133,11 +133,64 @@ body {
 }
 #content {
 	background-color: #ffffff;
+	color: #444444;
 	border-top: 12px solid #bdce00;
-	padding: 0 0 180px 0;
+	padding: 0 0 204px 0;
 	margin: 0px auto;
 	min-height: 180px;
 	width: 900px;
+	font-size: 0.875em;
+	line-height: 1.4em;
+}
+#content div.columns {
+	padding: 0px 18px;
+}
+#content h2.page-title {
+	color: #054c1d;
+	font-family: museo-slab, Courier New, sans-serif;
+	font-size: 1.5em;
+	line-height: 1.4em;
+	margin: 18px 36px;
+	border-bottom: 1px solid #054c1d;
+	padding: 0 0 6px 0;
+}
+#content h2.page-title a {
+	color: #054c1d;
+	text-decoration: none;
+}
+#content h2.page-title a:hover {
+	text-decoration: underline;
+}
+#content h3 {
+	color: #054c1d;
+	font-size: 1.25em;
+	line-height: 1.1em;
+	margin: 0 0 1em 0;
+}
+#content p {
+	font-size: 1em;
+	line-height: 1.4em;
+}
+#content ul.page-menu {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	font-size: 1em;
+	line-height: 1.2em;
+	font-family: museo-slab, Courier New, sans-serif;
+}
+#content ul.page-menu > li > a {
+	color: #054c1d;
+	text-decoration: none;
+	display: block;
+	padding: 6px 12px;
+}
+#content ul.page-menu > li > a:hover {
+	background: #054c1d;
+	color: #ffffff;
+}
+#content ul.page-menu > li.current_page_item {
+	background: #bdce00;
 }
 #footer {
 	background: #bdce00;
