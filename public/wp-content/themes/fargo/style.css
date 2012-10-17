@@ -7,6 +7,8 @@ Author URI:     http://www.pixeltrix.co.uk/
 Version:        1.0.0
 */
 
+/* @override http://fargosfordstreet.local/wp-content/themes/fargo/style.css */
+
 html {
 	height: 100%;
 }
@@ -225,7 +227,7 @@ body {
 #content p {
 	font-size: 1em;
 	line-height: 1.4em;
-	margin: 0 0 1em 0;
+	margin: 1em 0;
 }
 #content div.page-header {
 	margin: 0 0 18px 0;	
