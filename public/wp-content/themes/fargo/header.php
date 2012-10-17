@@ -16,4 +16,3 @@
 </div>
 <div id="navigation" class="container"><?php fargo_main_menu(); ?></div>
 <div id="content">
-<div id="body">
