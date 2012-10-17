@@ -170,6 +170,7 @@ body {
 #content p {
 	font-size: 1em;
 	line-height: 1.4em;
+	margin: 0 1em;
 }
 #content ul.page-menu {
 	list-style: none;
