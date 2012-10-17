@@ -97,19 +97,19 @@ body {
 #navigation ul.sub-menu {
 	background: #bdce00;
 	text-align: left;
-	padding: 6px 0;
+	padding: 0 0 6px 0;
 	position: absolute;
 	min-width: 180px;
 	display: none;
 }
 #navigation ul.sub-menu > li > a {
 	font-family: museo-slab, Courier New, sans-serif;
-	font-size: 1em;
+	font-size: 0.875em;
 	text-decoration: none;
 }
 #navigation ul.sub-menu > li > a {
 	color: #054c1d;
-	padding: 6px 18px;
+	padding: 4px 18px;
 	display: block;
 }
 #navigation ul.sub-menu > li > a:hover {
