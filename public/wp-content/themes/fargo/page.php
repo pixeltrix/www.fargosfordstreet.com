@@ -6,6 +6,9 @@
 <?php fargo_page_menu(); ?>
 </div>
 <div class="column span_8">
+<?php if (has_post_thumbnail()): ?>
+<div class="page-header"><?php the_post_thumbnail('page-header'); ?></div>
+<?php endif; ?>
 <?php the_content(); ?>
 </div>
 </div>

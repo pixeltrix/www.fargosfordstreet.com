@@ -205,7 +205,7 @@ body {
 	font-family: museo-slab, Courier New, sans-serif;
 	font-size: 1.5em;
 	line-height: 1.4em;
-	margin: 18px 36px;
+	margin: 18px 36px 0;
 	border-bottom: 1px solid #054c1d;
 	padding: 0 0 6px 0;
 }
@@ -227,10 +227,16 @@ body {
 	line-height: 1.4em;
 	margin: 0 0 1em 0;
 }
+#content div.page-header {
+	margin: 0 0 18px 0;	
+}
+#content div.page-header img {
+	display: block;
+}
 #content ul.page-menu {
 	list-style: none;
 	padding: 0;
-	margin: 0;
+	margin: 9px 0 0 0;
 	font-size: 1em;
 	line-height: 1.2em;
 	font-family: museo-slab, Courier New, sans-serif;

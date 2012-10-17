@@ -9,6 +9,7 @@
 
     add_theme_support('post-thumbnails');
     add_image_size('gallery', 900, 326, true);
+    add_image_size('page-header', 540, 310, true);
   }
 
   add_action('after_setup_theme', 'fargo_theme_setup');
