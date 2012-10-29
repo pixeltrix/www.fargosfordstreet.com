@@ -259,6 +259,15 @@ body {
 #content ul.page-menu > li.current_page_item {
 	background: #bdce00;
 }
+#content div.mapp-container {
+	margin: 1em 0 0 0 !important;
+	padding: 0 !important;
+	width: 468px !important;
+	height: 351px !important;
+}
+#content div.mapp-canvas-panel {
+	border: 1px solid #054c1d;
+}
 #footer {
 	background: #bdce00;
 	color: #054c1d;
