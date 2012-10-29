@@ -243,9 +243,6 @@ body {
 #content a {
 	color: #054c1d;
 }
-#content img {
-	border: 6px solid #bdce00;
-}
 #content img.alignleft {
 	float: left;
 	margin: 0 1em 1em 0;
@@ -260,6 +257,7 @@ body {
 	position: relative;
 }
 #content blockquote img {
+	border: 6px solid #bdce00;
 	position: absolute;
 	left: 0;
 }
