@@ -43,6 +43,9 @@ body {
 .columns .span_6 {
 	width: 396px;
 }
+.columns .span_7 {
+	width: 468px;
+}
 .columns .span_8 {
 	width: 540px;
 }
