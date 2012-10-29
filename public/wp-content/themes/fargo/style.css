@@ -222,21 +222,59 @@ body {
 	text-decoration: underline;
 }
 #content h3 {
+	font-family: museo-slab, Courier New, sans-serif;
 	color: #054c1d;
 	font-size: 1.25em;
 	line-height: 1.1em;
-	margin: 0 0 1em 0;
+	margin: 1em 0 0.25em 0;
+}
+#content h4 {
+	font-family: museo-slab, Courier New, sans-serif;
+	color: #054c1d;
+	font-size: 1.125em;
+	line-height: 1.4em;
+	margin: 1.25em 0 0 0;
 }
 #content p {
 	font-size: 1em;
 	line-height: 1.4em;
+	margin: 0 0 0.75em;
+}
+#content a {
+	color: #054c1d;
+}
+#content img {
+	border: 6px solid #bdce00;
+}
+#content img.alignleft {
+	float: left;
+	margin: 0 1em 1em 0;
+}
+#content img.alignright {
+	float: right;
+	margin: 0 0 1em 1em;
+}
+#content blockquote {
 	margin: 1em 0;
+	overflow: hidden;
+	position: relative;
+}
+#content blockquote img {
+	position: absolute;
+	left: 0;
+}
+#content blockquote h4 {
+	margin: 0 0 0.5em 138px;
+}
+#content blockquote p {
+	margin: 0.5em 0 0 138px;
 }
 #content div.page-header {
 	margin: 0 0 18px 0;	
 }
 #content div.page-header img {
 	display: block;
+	border: none;
 }
 #content ul.page-menu {
 	list-style: none;
