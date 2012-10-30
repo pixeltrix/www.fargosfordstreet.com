@@ -253,19 +253,33 @@ body {
 }
 #content blockquote {
 	margin: 1em 0;
-	overflow: hidden;
 	position: relative;
+	min-height: 120px;
 }
 #content blockquote img {
 	border: 6px solid #bdce00;
 	position: absolute;
 	left: 0;
 }
+#content blockquote a.colorbox {
+	position: absolute;
+	left: 0px;
+}
+#content blockquote a.colorbox img {
+	display: block;
+	float: none;
+	position: static;
+	margin: 0;
+}
+#content blockquote a.colorbox:focus {
+	outline: none;
+}
 #content blockquote h4 {
 	margin: 0 0 0.5em 138px;
 }
 #content blockquote p {
 	margin: 0.5em 0 0 138px;
+	overflow: hidden;
 }
 #content div.page-header {
 	margin: 0 0 18px 0;	
