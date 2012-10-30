@@ -1,3 +1,5 @@
+<?php wp_enqueue_script('jquery'); ?>
+<?php wp_enqueue_script('jquery-colorbox'); ?>
 <?php get_header(); ?>
 <?php while (have_posts()): the_post(); ?>
 <h2 class="page-title"><?php fargo_breadcrumbs(); ?></h2>
@@ -13,4 +15,9 @@
 </div>
 </div>
 <?php endwhile; ?>
+<script type="text/javascript">
+jQuery(function($) {
+  $('a.colorbox').colorbox();
+});
+</script>
 <?php get_footer(); ?>

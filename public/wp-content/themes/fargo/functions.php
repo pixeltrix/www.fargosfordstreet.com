@@ -5,6 +5,7 @@
       'main' => 'Main Menu'
     ));
 
+    wp_register_script('jquery-colorbox', get_bloginfo('template_directory') . '/jquery.colorbox.js', array('jquery'), '1.3.20');
     wp_register_script('jquery-tools', get_bloginfo('template_directory') . '/jquery.tools.js', array('jquery'), '1.2.7');
 
     add_theme_support('post-thumbnails');
