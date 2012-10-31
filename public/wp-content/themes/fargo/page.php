@@ -17,7 +17,7 @@
 <?php endwhile; ?>
 <script type="text/javascript">
 jQuery(function($) {
-  $('a.colorbox').colorbox();
+  $('a.colorbox').colorbox({ maxWidth: '90%', maxHeight: '90%', scalePhotos: true, returnFocus: false });
 });
 </script>
 <?php get_footer(); ?>

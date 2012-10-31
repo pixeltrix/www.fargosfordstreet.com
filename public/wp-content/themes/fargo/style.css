@@ -7,8 +7,6 @@ Author URI:     http://www.pixeltrix.co.uk/
 Version:        1.0.0
 */
 
-/* @override http://fargosfordstreet.local/wp-content/themes/fargo/style.css */
-
 html {
 	height: 100%;
 }
@@ -20,6 +18,9 @@ body {
 	line-height: 1.3333em;
 	height: 100%;
 	margin: 0px;
+}
+a img {
+	border: none;
 }
 .container {
 	margin: 0px auto;
@@ -280,6 +281,25 @@ body {
 #content blockquote p {
 	margin: 0.5em 0 0 138px;
 	overflow: hidden;
+}
+#content ul.gallery {
+	list-style: none;
+	margin: -5px -10px;
+	padding: 0;
+	overflow: hidden;
+}
+#content ul.gallery li {
+	float: left;
+	margin: 10px;
+}
+#content ul.gallery li a {
+	display: block;
+	width: 108px;
+	height: 108px;
+	border: 6px solid #bdce00;
+}
+#content ul.gallery li a img {
+	display: block;
 }
 #content div.page-header {
 	margin: 0 0 18px 0;	
