@@ -4,7 +4,7 @@ MapPress PHP files are GPL-licensed as described in the header of each file.
 
 MapPress javascript files in this plugin are copyright Chris Richardson, 2010 all rights reserved.
 
-The PRO version of MapPress may be used on up to three commercial sites per copy.  
+The PRO version of MapPress may be used on up to three commercial blogs per copy.  The PRO Developer version may be used on an unlimited number of commercial blogs.
 
 SOFTWARE LICENSE AGREEMENT AND CONDITIONS FOR USE
 
@@ -37,9 +37,9 @@ OR USE THE PRODUCT.
 	  copyright notice that is included in or attached to the work
 	  (an example is provided in the Appendix below).
 
-   2. Links.  You may not remove, obscure, alter or hide the
-	  "Powered By MapPress" link unless you have purchased a commercial version
-	  of the plugin or received written permission from the author.
+   2. Links.  You may not remove, obscure, alter or hide any links in the plugin
+	  unless you have purchased a commercial version of the plugin or
+	  received written permission from the author.
 
    3. Trademarks. This License does not grant permission to use the trade
 	  names, trademarks, service marks, or product names of the Licensor,
