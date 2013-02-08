@@ -37,15 +37,13 @@
 		</div>
 
 		<div>
-			<?php if (Mappress::$options->tinyMCE) : ?>
-				<a id="mapp_e_visual"><?php _e('Visual', 'mappress'); ?></a> | <a id="mapp_e_html"><?php _e('HTML', 'mappress');?></a>
-			<?php endif; ?>
+			<a id="mapp_e_visual"><?php _e('Visual', 'mappress'); ?></a> | <a id="mapp_e_html"><?php _e('HTML', 'mappress');?></a>
 			<textarea id='mapp_e_poi_body' class='mapp-e-poi-body' rows='10' style='width:99%'></textarea>
 		</div>
 
 		<div>
-			<input id='mapp_e_save_poi' class='button-primary' type='button' value='<?php _e('Save', 'mappress'); ?>' />
-			<input id='mapp_e_cancel_poi' class='button' type='button' value='<?php _e('Cancel', 'mappress'); ?>' />
+			<input id='mapp_e_save_poi' class='button-primary' type='button' value='<?php esc_attr_e('Save', 'mappress'); ?>' />
+			<input id='mapp_e_cancel_poi' class='button' type='button' value='<?php esc_attr_e('Cancel', 'mappress'); ?>' />
 		</div>
 	</div>
 

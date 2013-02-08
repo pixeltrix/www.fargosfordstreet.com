@@ -60,7 +60,6 @@ class Mappress_Map extends Mappress_Obj {
 		// Tables		
 		$maps_table = $wpdb->prefix . 'mappress_maps';
 		$posts_table = $wpdb->prefix . 'mappress_posts';
-		$pois_table = $wpdb->prefix . 'mappress_pois';
 
 		$wpdb->show_errors(true);
 		
@@ -273,7 +272,7 @@ class Mappress_Map extends Mappress_Obj {
 	* Find any map for the post that was created automatically from a custom field
 	*
 	* @param mixed $postid
-	* @return Mappress_Map
+	* @return Mappress_Map or null if no map available
 	*/
 	static function get_post_meta_map ($postid) {
 		global $wpdb;
@@ -288,7 +287,7 @@ class Mappress_Map extends Mappress_Obj {
 		// Find which map, if any was generated automatically
 		foreach($results as $key => $result) {
 			$map = Mappress_Map::get($result->mapid);
-			if ($map->metaKey)
+			if ($map && $map->metaKey)
 				return $map;
 		}
 	}
@@ -425,6 +424,7 @@ class Mappress_Map extends Mappress_Obj {
 
 		$actions = "<div class='mapp-m-actions'>"
 			. "<a href='#' class='mapp-maplist-edit'>" . __('Edit', 'mappress') . "</a> | " 
+			. "<a href='#' class='mapp-maplist-insert'>" . __('Insert into post', 'mappress') . "</a> | " 
 			. "<a href='#' class='mapp-maplist-delete'>" . __('Delete', 'mappress') . "</a>" 
 			. "</div>";
 		

@@ -213,7 +213,7 @@ class Mappress_Poi extends Mappress_Obj {
 		if (!$this->postid)
 			return "";
 
-		return get_post_meta($this->postid, $key, $single);
+		return get_post_meta($this->postid, $field, $single);
 	}
 
 	/**
@@ -347,7 +347,7 @@ class Mappress_Poi extends Mappress_Obj {
 			return '';
 
 		$map = $this->map();
-		if ($map->options->thumbs && $map->options->mashupBody == 'excerpt') {
+		if ($map->options->thumbs) {
 			if (isset($args['size']))
 				$size = $args['size'];
 			else

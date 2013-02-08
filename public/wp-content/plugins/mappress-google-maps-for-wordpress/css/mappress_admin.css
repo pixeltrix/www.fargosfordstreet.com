@@ -4,6 +4,15 @@
 	-----------------------------------------------------------------------------------
 */
 
+.mapp-m-panel {}
+
+.mapp-m-panel hr {
+	background-color: lightgray;		/* Some browsers used background color */
+	border: 0;
+	color: lightgray;					/* IE uses color */
+	height: 1px;
+}
+
 .mapp-m-map-list {
 	width: 100%; 
 	height: 100%; 
@@ -15,7 +24,7 @@
 	visibility: hidden;
 }
 
-tr:hover .mapp-m-actions {
+tr:hover > td > .mapp-m-actions {
 	visibility: visible;
 }
 
@@ -25,24 +34,25 @@ tr:hover .mapp-m-actions {
 	-----------------------------------------------------------------------------------
 */
 
-.mapp-panel {
-	margin-top:5px; 
-	padding-top: 5px; 
-	margin-bottom: 10px; 
-	border-top: 1px solid lightgray;
-}
-	
 .mapp-e-edit-panel {
+	border-top: 1px solid lightgray; 
+	margin-top: 5px;
 	white-space:nowrap; 
 }
 
+.mapp-e-top-toolbar {
+	font-size: 12px;
+}
+	
 .mapp-e-canvas {
-	max-width: 75%;
+	max-width: 100%;
 	border: 1px solid lightgray;
 }
-			 
+	
 .mapp-e-poi-list {
-	border: 1px solid lightgray;
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
 	display: inline-block; 
 	width: 25%; 
 	height: 100%; 
@@ -66,7 +76,7 @@ tr:hover .mapp-m-actions {
 	visibility: hidden;
 }
 
-tr:hover .mapp-e-actions {
+tr:hover > td > .mapp-e-actions {
 	visibility: visible;
 }
 
@@ -144,9 +154,14 @@ tr:hover .mapp-e-actions {
 }
 
 .mapp-icon-picker li {
+	border: 2px solid white;	
 	display: inline-block;
 	user-select: none;
 	margin: 0px;
+}
+
+.mapp-icon-picker li:hover {
+	border: 2px solid blue;
 }
 
 /* Default icon appears as an empty dotted box */
@@ -156,16 +171,7 @@ li.mapp-default-icon {
 	border: 1px dotted black;
 }
 
-.mapp-icon-picker img {
-	border: 2px solid transparent;
-	max-width: 32px;
-	max-height: 32px;
-}
-
-.mapp-icon-picker img:hover {
-	border: 2px solid blue;
-}
-
+.mapp-icon-sprite { background: transparent url('../images/icons.png') no-repeat; width: 32px; height: 32px }
 
 /*
 	-----------------------------------------------------------------------------------
@@ -251,4 +257,3 @@ li.mapp-default-icon {
 
 	border: 1px solid black;
 }
-

@@ -53,10 +53,11 @@ class Mappress_Options extends Mappress_Obj {
 		$metaKeyBody,
 		$metaKeyZoom,
 		$metaErrors = true,
-		$metaSyncSave = true,
+		$metaSyncSave = true,			
 		$metaSyncUpdate = false,    	// Deprecated, left for back-compat
 		$name,
-		$noCSS,
+		$noCSS,  
+		$onLoad = false,
 		$overviewMapControl = true,
 		$overviewMapControlOpened = false,
 		$panControl = false,
@@ -79,8 +80,7 @@ class Mappress_Options extends Mappress_Obj {
 		$thumbSize,
 		$thumbWidth = 64,
 		$thumbHeight = 64,
-		$tilt = 45,                 	// Use 45 for 45-degree map imagery, 0 to turn it off
-		$tinyMCE = true,				// true to use tinyMCE editor
+		$tilt = 0,                 		// 45 = 45-degree imagery, 0 = off; off by default because it can cause flicker on load
 		$tooltips = true,
 		$transit = false,
 		$traffic = false,
@@ -161,9 +161,9 @@ class Mappress_Settings {
 		add_settings_field('directionsUnits', __('Directions units', 'mappress'), array(&$this, 'set_directions_units'), 'mappress', 'localization_settings');
 
 		add_settings_section('misc_settings', __('Miscellaneous', 'mappress'), array(&$this, 'section_settings'), 'mappress');
-		add_settings_field('tinyMCE', __('POI editor', 'mappress'), array(&$this, 'set_tiny_mce'), 'mappress', 'misc_settings');
 		add_settings_field('adaptive', __('Adaptive display', 'mappress'), array(&$this, 'set_adaptive'), 'mappress', 'misc_settings');
 		add_settings_field('noCSS', __('Turn off CSS', 'mappress'), array(&$this, 'set_no_css'), 'mappress', 'misc_settings');
+		add_settings_field('onLoad', __('Load maps last', 'mappress'), array(&$this, 'set_onload'), 'mappress', 'misc_settings');
 	}
 
 	function set_options($input) {
@@ -207,7 +207,9 @@ class Mappress_Settings {
 		$input['poiLinks'] = (isset($input['poiLinks'])) ? $input['poiLinks'] : array();
 		$input['mapLinks'] = (isset($input['mapLinks'])) ? $input['mapLinks'] : array();
 		$input['postTypes'] = (isset($input['postTypes'])) ? $input['postTypes'] : array();
-		$input['geocoders'] = (isset($input['geocoders'])) ? $input['geocoders'] : array();
+		
+		// Must select at least 1 geocoder
+		$input['geocoders'] = (isset($input['geocoders'])) ? $input['geocoders'] : array('google');
 
 		return $input;
 	}
@@ -473,11 +475,6 @@ class Mappress_Settings {
 
 		echo self::radio($autos, $this->options->autodisplay, "mappress_options[autodisplay]");
 	}
-
-	function set_tiny_mce() {
-		echo self::checkbox($this->options->tinyMCE, 'mappress_options[tinyMCE]', __('Use tinyMCE', 'mappress'));
-		return;
-	}
 	
 	function set_adaptive() {
 		echo self::checkbox($this->options->adaptive, 'mappress_options[adaptive]', __("Recenter maps when window is resized", 'mappress'));
@@ -487,41 +484,10 @@ class Mappress_Settings {
 		echo self::checkbox($this->options->noCSS, 'mappress_options[noCSS]', sprintf(__("Don't load the %s stylesheet", 'mappress'), '<code>mappress.css</code>'));
 	}
 
-	/**
-	* RSS metabox
-	*
-	*/
-	function metabox_rss() {
-		$news_rss_url = 'http://www.wphostreviews.com/category/news/feed';
-		$news_url = 'http://wphostreviews.com/category/news';
-
-		include_once(ABSPATH . WPINC . '/feed.php');
-		$rss = fetch_feed( $news_rss_url );
-
-		if ( is_wp_error($rss) ) {
-			echo "<li>" . __('No new items', 'mappress') . "</li>";
-			return false;
-		}
-
-		$maxitems = $maxitems = $rss->get_item_quantity(5);
-		$rss_items = $rss->get_items( 0, $maxitems );
-
-		echo '<ul>';
-		if ( !$rss_items ) {
-			echo "<li>" . __('No new items') . "</li>";
-		} else {
-			foreach ( $rss_items as $item ) {
-				echo '<li>'
-					. '<a class="rsswidget" href="' . esc_url( $item->get_permalink() ). '">' . esc_html( $item->get_title() ) .'</a> '
-					. '</li>';
-			}
-		}
-		echo '</ul>';
-		echo "<br/><img src='" . plugins_url('images/news.png', __FILE__) . "'/> <a href='$news_url'>" . __("Read More", 'mappress') . "</a>";
-		echo "<br/><br/><img src='" . plugins_url('images/rss.png', __FILE__) . "'/> <a href='$news_rss_url'>" . __("Subscribe with RSS", 'mappress') . "</a>";
+	function set_onload() {
+		echo self::checkbox($this->options->onLoad, 'mappress_options[onLoad]', __("Load maps in window 'load' event", 'mappress'));
 	}
-
-
+	
 	/**
 	* Like metabox
 	*
@@ -609,7 +575,6 @@ class Mappress_Settings {
 						if (!class_exists('Mappress_Pro'))
 							add_meta_box('metabox_like', __('Like this plugin?', 'mappress'), array(&$this, 'metabox_like'), 'mappress_sidebar', 'side', 'core');
 
-						add_meta_box('metabox_rss', __('MapPress News', 'mappress'), array(&$this, 'metabox_rss'), 'mappress_sidebar', 'side', 'core');
 						add_meta_box('metabox_demo', __('Sample Map', 'mappress'), array(&$this, 'metabox_demo'), 'mappress_sidebar', 'side', 'core');
 						do_meta_boxes('mappress_sidebar', 'side', null);
 					?>
