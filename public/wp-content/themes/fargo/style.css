@@ -169,6 +169,10 @@ a img {
 	width: 8px;
 	height: 8px;
 	margin: 0 0 0 8px;
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 #gallery div.tabs a:hover {
 	background-color: #bdce00;
