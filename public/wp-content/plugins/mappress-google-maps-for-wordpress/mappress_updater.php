@@ -28,15 +28,11 @@ class Mappress_Updater {
 	*/
 	function site_transient_update_plugins($value) {
 		if (isset($value->response[$this->basename])) {
-			// Remove the proposed update
-			unset($value->response[$this->basename]);
+			if (!has_filter( "after_plugin_row_$this->basename" ))
+				add_filter("after_plugin_row_$this->basename", array(&$this, 'after_plugin_row_pro'), 20);
 
-			// Suggest Pro update if not a minor versions
-			$dots = substr_count($value->response[$this->basename]->new_version, '.');
-			if ($dots < 2) {
-				if (!has_filter( "after_plugin_row_$this->basename" ))
-					add_filter("after_plugin_row_$this->basename", array(&$this, 'after_plugin_row_pro'), 20);
-			}
+			// Remove the proposed update
+			unset($value->response[$this->basename]);				
 		}
 		return $value;
 	}

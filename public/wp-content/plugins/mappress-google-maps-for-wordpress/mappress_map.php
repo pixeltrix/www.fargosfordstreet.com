@@ -192,13 +192,13 @@ class Mappress_Map extends Mappress_Obj {
 		$postid = (isset($_POST['postid'])) ? $_POST['postid'] : null;
 
 		if (!$mapdata)
-			Mappress::ajax_response(__('Internal error, your data has not been saved!', 'mappress'));
+			Mappress::ajax_response('Internal error, your data has not been saved!');
 
 		$map = new Mappress_Map($mapdata);
 		$mapid = $map->save($postid);
 
 		if ($mapid === false) 
-			Mappress::ajax_response(__('Internal error, your data has not been saved!', 'mappress'));
+			Mappress::ajax_response('Internal error, your data has not been saved!');
 
 		do_action('mappress_map_save', $mapid); 	// Use for your own developments
 		Mappress::ajax_response('OK', array('mapid' => $mapid, 'list' => self::get_map_list($postid)) );
@@ -234,7 +234,7 @@ class Mappress_Map extends Mappress_Obj {
 		$result = Mappress_Map::delete($mapid);
 
 		if (!$result) 
-			Mappress::ajax_response(__("Internal error when deleting map ID '$mapid'!", 'mappress'));
+			Mappress::ajax_response("Internal error when deleting map ID '$mapid'!");
 
 		do_action('mappress_map_delete', $mapid); 	// Use for your own developments
 		Mappress::ajax_response('OK', array('mapid' => $mapid));

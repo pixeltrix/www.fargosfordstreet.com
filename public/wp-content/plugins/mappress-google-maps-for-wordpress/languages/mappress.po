@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-04 18:05-0800\n"
-"PO-Revision-Date: 2013-02-04 18:05-0800\n"
+"POT-Creation-Date: 2013-02-15 09:08-0800\n"
+"PO-Revision-Date: 2013-02-15 09:08-0800\n"
 "Last-Translator: Plugin Author <donotreply@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -147,11 +147,6 @@ msgstr ""
 msgid "Map not found"
 msgstr ""
 
-#: ../mappress_map.php:195
-#: ../mappress_map.php:201
-msgid "Internal error, your data has not been saved!"
-msgstr ""
-
 #: ../mappress_map.php:426
 msgid "Edit"
 msgstr ""
@@ -167,7 +162,7 @@ msgstr ""
 
 #: ../mappress_map.php:479
 #: ../mappress_settings.php:447
-#: ../forms/map_editor.php:13
+#: ../forms/map_editor.php:17
 msgid "Center map"
 msgstr ""
 
@@ -637,11 +632,11 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: ../mappress_updater.php:45
+#: ../mappress_updater.php:41
 msgid "download it now"
 msgstr ""
 
-#: ../mappress_updater.php:50
+#: ../mappress_updater.php:46
 #, php-format
 msgid "A PRO Version update is available for manual installation: %s"
 msgstr ""
@@ -655,7 +650,7 @@ msgstr ""
 msgid "My location"
 msgstr ""
 
-#: ../forms/map_editor.php:14
+#: ../forms/map_editor.php:18
 msgid "Click map for lat/lng: "
 msgstr ""
 

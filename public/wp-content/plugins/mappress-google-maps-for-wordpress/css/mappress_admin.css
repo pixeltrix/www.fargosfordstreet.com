@@ -40,22 +40,28 @@ tr:hover > td > .mapp-m-actions {
 	white-space:nowrap; 
 }
 
+table.mapp-e-editor {
+	border-collapse: collapse;
+	table-layout: fixed;
+	width: 100%;   
+}
+
+.mapp-e-editor td {
+	vertical-align: top;
+}
+
 .mapp-e-top-toolbar {
 	font-size: 12px;
 }
 	
 .mapp-e-canvas {
 	max-width: 100%;
+	min-height: 200px;				/* Used only if a % height is applied */
 	border: 1px solid lightgray;
 }
 	
 .mapp-e-poi-list {
 	border-left: 1px solid lightgray;
-	border-right: 1px solid lightgray;
-	border-bottom: 1px solid lightgray;
-	display: inline-block; 
-	width: 25%; 
-	height: 100%; 
 	cursor: move;
 	overflow: auto;
 }
