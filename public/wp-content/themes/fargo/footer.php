@@ -12,6 +12,11 @@
 </dl>
 </div>
 <div class="column span_9">
+<ul class="social">
+<li class="title">Follow us on</li>
+<li class="facebook"><a href="https://www.facebook.com/fargovillage.coventry" target="_blank" title="Fargo Village on Facebook">Facebook</a></li>
+<li class="twitter"><a href="https://twitter.com/FargoVillage" target="_blank" title="Fargo Village on Twitter">Twitter</a></li>
+</ul>
 <ul class="logos">
 <li class="ccc"><a href="http://www.coventry.gov.uk" target="_blank" title="Coventry City Council">Coventry City Council</a></li>
 <li class="cdp"><a href="http://www.complexdevelopmentprojects.co.uk" target="_blank" title="Complex Development Projects">Complex Development Projects</a></li>
