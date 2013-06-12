@@ -2,6 +2,5 @@ Capfile
 public/.htaccess
 public/wp-config.php
 public/wp-content/uploads
-public/wp-content/plugins/wordpress-move/backup
 REVISION
 tmp
