@@ -9,10 +9,10 @@
 <div class='mapp-e-edit-panel'>
 	<table class='mapp-e-editor'>
 		<tr>
-			<td style='width: 25%;'>
+			<td style='width: 25%'>
 				<div id='mapp_e_poi_list' class='mapp-e-poi-list'></div>
 			</td>
-			<td style='width: 75%;'>
+			<td style='width: 75%'>
 				<div id='mapp_e_top_toolbar' class='mapp-e-top-toolbar'>
 					<a href='#' id='mapp_e_recenter'><?php _e('Center map', 'mappress'); ?></a> |
 					<?php _e('Click map for lat/lng: ', 'mappress'); ?><span id='mapp_e_latlng'>0,0</span>

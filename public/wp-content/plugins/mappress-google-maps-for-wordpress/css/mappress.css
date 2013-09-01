@@ -91,7 +91,7 @@
 /* Map tiles */
 .mapp-canvas img {
 	background-color: transparent !important;
-	max-width: none !important;  		/* Some themes have max-width/max-height set 	*/
+	max-width: 99999px !important;  		/* Some themes have max-width/max-height set, and some phones can't accept max-width: auto.  */
 	max-height: none !important;
 	visibility: inherit !important;
 	padding: 0px !important;
@@ -111,6 +111,7 @@
 */
 
 .mapp-iw {
+	font-size: 14px;		/* Google may apply scrollbars - best size seems to be 12px */
 	padding: 0px ;
 	margin: 0px ;
 	color: black ;
@@ -159,7 +160,7 @@
 	-webkit-box-shadow: 5px 5px 5px #888;
 	box-shadow: 5px 5px 5px #888;
 	display: none;
-	max-width: 450px;				
+	max-width: 450px;
 	min-width: 200px;
 	overflow: auto;
 	padding: 15px;
@@ -211,7 +212,7 @@
 .mapp-poi-list table {
 	margin-top: 10px ;
 	width: 100% ;
-	line-height: normal ;
+	line-height: normal !important;		/* 2012 sets to 2 */
 	border-collapse: collapse ;
 }
 

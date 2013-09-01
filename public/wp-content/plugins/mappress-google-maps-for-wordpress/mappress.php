@@ -4,7 +4,7 @@ Plugin Name: MapPress Easy Google Maps
 Plugin URI: http://www.wphostreviews.com/mappress
 Author URI: http://www.wphostreviews.com/mappress
 Description: MapPress makes it easy to insert Google Maps in WordPress posts and pages.
-Version: 2.40.3
+Version: 2.40.7
 Author: Chris Richardson
 Thanks to all the translators and to Matthias Stasiak for his wonderful icons (http://code.google.com/p/google-maps-icons/)
 */
@@ -29,7 +29,7 @@ Thanks to all the translators and to Matthias Stasiak for his wonderful icons (h
 @include_once dirname( __FILE__ ) . '/pro/mappress_widget.php';
 
 class Mappress {
-	const VERSION = '2.40.3';
+	const VERSION = '2.40.7';
 
 	static
 		$baseurl,
@@ -42,11 +42,11 @@ class Mappress {
 		$pages,
 		$remote,
 		$updater;
-		
+
 	var
 		$queue;
 
-	function __construct()  {    
+	function __construct()  {
 		self::$options = Mappress_Options::get();
 		self::$basename = plugin_basename(__FILE__);
 		self::$baseurl = plugins_url('', __FILE__);
@@ -59,7 +59,7 @@ class Mappress {
 		elseif (defined('MAPPRESS_DEBUG'))
 			self::$js = self::$baseurl . '/src';
 		else self::$js = self::$baseurl . '/js';
-			
+
 		// Initialize Pro classes
 		if (class_exists('Mappress_Pro')) {
 			$icons = new Mappress_Icons();
@@ -87,7 +87,7 @@ class Mappress {
 		add_action( 'wp_print_footer_scripts', array(&$this, 'print_maps'));
 		add_action( 'admin_print_footer_scripts', array(&$this, 'print_maps'));
 	}
-													   
+
 	// mp_errors -> PHP errors
 	// mp_info -> phpinfo + dump
 	// mp_remote -> use remote js
@@ -137,11 +137,11 @@ class Mappress {
 
 	static function ajax_response($status, $data=null) {
 		$output = trim(ob_get_clean());		// Ignore whitespace, any other output is an error
-		header( "Content-Type: application/json" );		
+		header( "Content-Type: application/json" );
 		$response = json_encode(array('status' => $status, 'data' => $data, 'output' => $output));
 		die ($response);
 	}
-	
+
 	/**
 	* When a post is deleted, delete its map assignments
 	*
@@ -156,7 +156,7 @@ class Mappress {
 		// Settings
 		$settings = (class_exists('Mappress_Pro')) ? new Mappress_Pro_Settings() : new Mappress_Settings();
 		self::$pages[] = add_menu_page('MapPress', 'MapPress', 'manage_options', 'mappress', array(&$settings, 'options_page'), self::$baseurl . '/images/mappress_pin_logo.png');
-	}                       
+	}
 
 	/**
 	* Automatic map display.
@@ -178,7 +178,7 @@ class Mappress {
 		// Check if in the loop, to prevent conflicts with JetPack - see http://wordpress.org/support/topic/easy-adsense-lite-and-jetpack
 		if (!in_the_loop())
 			return $content;
-			
+
 		// Don't add the shortcode for feeds or admin screens
 		if (is_feed() || is_admin())
 			return $content;
@@ -251,7 +251,7 @@ class Mappress {
 		// Don't load any CSS at all
 		if (self::$options->noCSS)
 			return;
-			
+
 		// Load the default CSS from the plugin directory
 		wp_enqueue_style('mappress', self::$baseurl . '/css/mappress.css', null, self::VERSION);
 
@@ -272,14 +272,18 @@ class Mappress {
 		$version = Mappress::VERSION;
 		$min = (defined('MAPPRESS_DEBUG') || self::$remote) ? "" : ".min";
 
+		// Some plugins call this without setting $hook
+		if (empty($hook))
+			return;
+
 		// Settings page
 		if ($hook == self::$pages[0]) {
 			wp_enqueue_script('postbox');
 			wp_enqueue_script( 'farbtastic');
-			wp_enqueue_script('mappress_settings', self::$js . "/mappress_settings$min.js", null, $version, true);			
+			wp_enqueue_script('mappress_settings', self::$js . "/mappress_settings$min.js", null, $version, true);
 			wp_enqueue_style('farbtastic');
-			wp_enqueue_style('mappress', self::$baseurl . '/css/mappress.css', null, self::VERSION);			
-			wp_enqueue_style('mappress_admin', self::$baseurl . '/css/mappress_admin.css', null, self::VERSION);			
+			wp_enqueue_style('mappress', self::$baseurl . '/css/mappress.css', null, self::VERSION);
+			wp_enqueue_style('mappress_admin', self::$baseurl . '/css/mappress_admin.css', null, self::VERSION);
 		}
 
 		// Post / page edit
@@ -288,7 +292,7 @@ class Mappress {
 			wp_enqueue_style('mappress_admin', self::$baseurl . '/css/mappress_admin.css', null, self::VERSION);
 	}
 
-	
+
 	/**
 	* There are several WP bugs that prevent correct activation in multisitie:
 	*   http://core.trac.wordpress.org/ticket/14170
@@ -303,18 +307,18 @@ class Mappress {
 
 		// Register hooks and create database tables
 		Mappress_Map::register();
-		
+
 		if (class_exists('Mappress_Query'))
 			Mappress_Query::register();
-		
+
 		// Check if upgrade is needed
 		$current_version = get_option('mappress_version');
 
 		if ($current_version < '2.38.2') {
 			self::$options->metaKeys = array(self::$options->metaKey);
 			self::$options->save();
-		}    
-		
+		}
+
 		update_option('mappress_version', self::VERSION);
 	}
 
@@ -354,7 +358,7 @@ class Mappress {
 			return array();
 
 		$atts = self::string_to_boolean($atts);
-		
+
 		// Shortcode attributes are lowercase so convert everything to lowercase
 		$atts = array_change_key_case($atts);
 
@@ -419,7 +423,7 @@ class Mappress {
 
 		return $data;
 	}
-	
+
 	/**
 	* Output javascript
 	*
@@ -429,14 +433,14 @@ class Mappress {
 		return "\r\n<script type='text/javascript'>\r\n/* <![CDATA[ */\r\n$script\r\n/* ]]> */\r\n</script>\r\n";
 	}
 
-	function enqueue_map($map = null, $options = null) {
+	function enqueue_map($map = null) {
 		// Load scripts
 		$this->load('map');
 
 		// Queue
-		$this->queue[$map->name] = (object) array('map' => $map, 'options' => $options );
+		$this->queue[$map->name] = $map;
 	}
-	
+
 	function enqueue_editor() {
 		$this->load('editor');
 		$this->queue['editor'] = true;
@@ -449,32 +453,36 @@ class Mappress {
 
 		if (class_exists('Mappress_Pro'))
 			$this->print_map_styles();
-			
+
 		if (isset($this->queue['editor'])) {
 			$script = "var mappMedia = new mapp.Media();";
 			echo Mappress::script($script);
 			return;
 		}
-			
-		foreach ($this->queue as $name => $item) {
-			$this->print_map($item->map);
 
-			$script = "var mapdata = " . json_encode($item->map) . ";"
-				. "var $name = new mapp.Map(mapdata);";
-				
-			$script .= (self::$options->onLoad) ? "jQuery(window).load(function() { $name.display(); });" : "$name.display();"; 
+		foreach ($this->queue as $name => $map) {
+			$this->print_map($map);
+
+			$script = "var mapdata = " . json_encode($map) . ";\r\n"
+				. "window.$name = new mapp.Map(mapdata); \r\n"
+				. "$name.display(); ";
+
+			// Workaround for Nextgen plugin, which reverses sequence of wp_enqueue_scripts and wp_print_footer_scripts output
+			if ((self::$options->onLoad) || class_exists('C_Photocrati_Resource_Manager'))
+				$script = "jQuery(document).ready(function () { $script; });";
+
 			echo Mappress::script($script);
 		}
 	}
 
 	/**
-	* Print a single map 
-	* 
+	* Print a single map
+	*
 	* @param mixed $map
 	*/
 	function print_map($map) {
 		$map->prepare();
-		
+
 		if ($map->options->directions == 'inline') {
 			echo "<div id='{$map->name}_directions_' style='display:none'>";
 			require(Mappress::$basedir . '/templates/map_directions.php');
@@ -500,15 +508,16 @@ class Mappress {
 			wp_enqueue_script('mappress_datatables', self::$baseurl . "/pro/DataTables/media/js/jquery.dataTables$min.js", array('jquery'), $version, true);
 			wp_enqueue_style('mappress-datatables', self::$baseurl . "/pro/DataTables/media/css/jquery.dataTables.css", null, '1.9.1');
 		}
-		
+
 		$libs = array();
-		if ($type == 'editor') 
+		if ($type == 'editor')
 			$libs[] = ('drawing');
 
-		$libstring = (empty($libs)) ? '' : "&amp;libraries=" . implode(',', $libs);														  
+		$libstring = (empty($libs)) ? '' : "&amp;libraries=" . implode(',', $libs);
 		$apikey = (!empty(self::$options->apiKey)) ? "&amp;key=" . self::$options->apiKey : '';
-		$language = (!empty(self::$options->language)) ? "&amp;language=" . self::$options->language : '';
-		wp_enqueue_script("mappress-gmaps", "https://maps.googleapis.com/maps/api/js?sensor=true{$language}{$libstring}{$apikey}", null, null, true);
+		$language = self::get_language();
+		$langstring = ($language) ? "&amp;language=$language" : '';
+		wp_enqueue_script("mappress-gmaps", "https://maps.googleapis.com/maps/api/js?sensor=true{$langstring}{$libstring}{$apikey}", null, null, true);
 
 		if ($min) {
 			wp_enqueue_script('mappress', self::$js . "/mappress.min.js", array('jquery'), $version, true);
@@ -571,6 +580,21 @@ class Mappress {
 		return $l10n;
 	}
 
+	/**
+	* Get language using settings/WPML/qTrans
+	*
+	*/
+	static function get_language() {
+		// For WPML (wpml.org): set the selected language if it wasn't specified in the options screen
+		if (defined('ICL_LANGUAGE_CODE'))
+			return ICL_LANGUAGE_CODE;
+
+		// For qTranslate, pick up current language from that
+		if (function_exists('qtrans_getLanguage'))
+			return qtrans_getLanguage();
+
+		return self::$options->language;
+	}
 }  // End Mappress class
 
 if (class_exists('Mappress_Pro'))

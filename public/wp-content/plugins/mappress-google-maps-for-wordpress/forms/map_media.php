@@ -24,7 +24,7 @@
 				</tr>
 				
 				<tr>
-					<td><?php _e('Map Title');?>:</td>
+					<td><?php _e('Map Title', 'mappress');?>:</td>
 					<td><input id='mapp_m_title' type='text' size='40' /></td>
 				</tr>
 				
@@ -33,7 +33,7 @@
 					<td>
 						<?php
 							$sizes = array();
-							foreach(Mappress::$options->mapSizes as $i => $size) 
+							foreach(Mappress::$options->sizes as $i => $size) 
 								$sizes[] = "<a href='#' class='mapp-m-size' data-width='{$size['width']}' data-height='{$size['height']}'>" . $size['width'] . 'x' . $size['height'] . "</a>";
 							echo implode(' | ', $sizes);
 						?>

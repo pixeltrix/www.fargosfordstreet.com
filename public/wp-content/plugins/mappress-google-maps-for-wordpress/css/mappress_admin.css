@@ -52,17 +52,18 @@ table.mapp-e-editor {
 
 .mapp-e-top-toolbar {
 	font-size: 12px;
+	height: 20px;
 }
 	
 .mapp-e-canvas {
-	max-width: 100%;
-	min-height: 200px;				/* Used only if a % height is applied */
+	width: 100%;
+	min-height: 200px;
 	border: 1px solid lightgray;
 }
 	
 .mapp-e-poi-list {
-	border-left: 1px solid lightgray;
 	cursor: move;
+	height: 370px;
 	overflow: auto;
 }
 

@@ -142,8 +142,7 @@ class Mappress_Poi extends Mappress_Obj {
 		if ($style == 'address')
 			$this->body = $this->get_address();
 	}
-	
-	
+		
 	/**
 	* Get the linked post, if any
 	*/
@@ -246,7 +245,7 @@ class Mappress_Poi extends Mappress_Obj {
 			if (in_array('directions_to', $links) && $map->options->directions != 'none')
 				$a[] = $this->get_directions_link(array('to' => $this, 'text' => __('Directions to', 'mappress')));
 			if (in_array('directions_from', $links) && $map->options->directions != 'none')
-				$a[] = $this->get_directions_link(array('from' => $this, 'to' => '', 'text' => __('Directions from')));
+				$a[] = $this->get_directions_link(array('from' => $this, 'to' => '', 'text' => __('Directions from', 'mappress')));
 		}
 
 		// Zoom isn't available in poi list by default
@@ -343,19 +342,23 @@ class Mappress_Poi extends Mappress_Obj {
 	* @param mixed $args - arguments to pass to WP get_the_post_thumbnail() function
 	*/
 	function get_thumbnail( $args = '' ) {
-		if (!$this->postid)
+		$map = $this->map();
+
+		if (!$this->postid || !$map->options->thumbs)
 			return '';
 
-		$map = $this->map();
-		if ($map->options->thumbs) {
-			if (isset($args['size']))
-				$size = $args['size'];
-			else
-				$size = ($map->options->thumbSize) ? $map->options->thumbSize : array($map->options->thumbWidth, $map->options->thumbHeight);
-			return get_the_post_thumbnail($this->postid, $size, $args);
-		}
-		
-		return "";
+		if (isset($args['size']))
+			$size = $args['size'];
+		else
+			$size = ($map->options->thumbSize) ? $map->options->thumbSize : array($map->options->thumbWidth, $map->options->thumbHeight);
+			
+		$html = get_the_post_thumbnail($this->postid, $size, $args);				
+
+		// If linking poi to underlying post, then link the featured image
+		if ($map->options->mashupLink) 
+			$html = "<a href='" . get_permalink($this->postid) . "'>$html</a>";
+			
+		return $html;
 	}
 }
 ?>
