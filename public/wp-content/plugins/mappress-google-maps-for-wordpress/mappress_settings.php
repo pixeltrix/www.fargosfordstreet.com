@@ -20,6 +20,7 @@ class Mappress_Options extends Mappress_Obj {
 		$directionsUnits = '',
 		$draggable = true,
 		$editable = false,
+		$from,
 		$geocoders = array('google'),
 		$hidden = false,				// Hide the map with a 'show map' link
 		$hideEmpty = false,				// Hide 'current posts' mashups if empty
@@ -28,6 +29,7 @@ class Mappress_Options extends Mappress_Obj {
 		$initialOpenInfo = false,
 		$initialTraffic = false,        // Initial setting for traffic checkbox (true = checked)
 		$initialTransit = false,
+		$iwFix = true,
 		$iwType = 'iw',                 // iw | ib | none
 		$iwDisableAutoPan,
 		$keyboardShortcuts = true,
@@ -82,6 +84,7 @@ class Mappress_Options extends Mappress_Obj {
 		$thumbWidth = 64,
 		$thumbHeight = 64,
 		$tilt = 0,                 		// 45 = 45-degree imagery, 0 = off; off by default because it can cause flicker on load
+		$to,
 		$tooltips = true,
 		$transit = false,
 		$traffic = false,
@@ -163,8 +166,9 @@ class Mappress_Settings {
 
 		add_settings_section('misc_settings', __('Miscellaneous', 'mappress'), array(&$this, 'section_settings'), 'mappress');
 		add_settings_field('sizes', __('Map sizes', 'mappress'), array(&$this, 'set_sizes'), 'mappress', 'misc_settings');
-		add_settings_field('adaptive', __('Adaptive display', 'mappress'), array(&$this, 'set_adaptive'), 'mappress', 'misc_settings');
+		add_settings_field('iwFix', __('Fix Scrollbars', 'mappress'), array(&$this, 'set_iw_fix'), 'mappress', 'misc_settings');
 		add_settings_field('noCSS', __('Turn off CSS', 'mappress'), array(&$this, 'set_no_css'), 'mappress', 'misc_settings');
+		add_settings_field('adaptive', __('Adaptive display', 'mappress'), array(&$this, 'set_adaptive'), 'mappress', 'misc_settings');
 		add_settings_field('onLoad', __('Load maps last', 'mappress'), array(&$this, 'set_onload'), 'mappress', 'misc_settings');
 	}
 
@@ -225,7 +229,7 @@ class Mappress_Settings {
 			'page' => __('Pages', 'mappress'),
 		);
 
-		$custom_post_types = get_post_types(array('public' => true, '_builtin' => false), 'objects');
+		$custom_post_types = get_post_types(array('show_ui' => true, '_builtin' => false), 'objects');
 		foreach ($custom_post_types as $name => $type)
 			$labels[$name] = $type->label;
 		echo self::checkbox_list($this->options->postTypes, 'mappress_options[postTypes][]', $labels);
@@ -471,6 +475,10 @@ class Mappress_Settings {
 		);
 
 		echo self::radio($autos, $this->options->autodisplay, "mappress_options[autodisplay]");
+	}
+
+	function set_iw_fix() {
+		echo self::checkbox($this->options->iwFix, 'mappress_options[iwFix]', __("Fix InfoWindow Scrollbars", 'mappress'));
 	}
 
 	function set_adaptive() {

@@ -85,7 +85,7 @@
 	overflow: hidden !important;
 	padding: 0px !important;
 	margin: 0px;  	/* Do not set !important on this - plugin overrides it using a style during display, for map alignment */
-	color: black !important;
+	word-wrap: normal;			/* 2013 sets break-word, which interferes w/Google copyright in IE only */
 }
 
 /* Map tiles */
@@ -110,20 +110,24 @@
 	-----------------------------------------------------------------------------------
 */
 
-.mapp-iw {
-	font-size: 14px;		/* Google may apply scrollbars - best size seems to be 12px */
-	padding: 0px ;
-	margin: 0px ;
-	color: black ;
-	line-height: normal ;
+/* Override common theme / user agent styles that interfere */
+.mapp-iw * {
+	color: black !important;
+	margin: 0px !important;
+	padding: 0px !important;
+	line-height: normal !important;
+}
+
+/* Override Google font bug (roboto webfont is loaded with a delay, making the IW size wrong on first open in Chrome) */
+.mapp-iw, .mapp-iw * {
+	font-family: sans-serif !important;		/* Needed for Chrome, override roboto font */
+	font-weight: normal;
+	font-size: 13px;
+	text-align: left;
 }
 
 .mapp-iw .mapp-title {
 	font-weight: bold;
-}
-
-.mapp-iw .mapp-body {
-	padding-bottom: 4px;
 }
 
 .mapp-iw .mapp-thumb {
@@ -139,12 +143,21 @@
 .mapp-iw .mapp-links {
 	clear: both;            /* Clear any floats from images in body */
 	white-space: nowrap;    /* Don't let links split in small infowindows */
-	margin: 0px;
-	padding-top: 4px ;
+	margin: 4px 0 0 0 !important;
+	padding-top: 4px !important;
 	border-top: 1px solid lightgray ;
 }
 
-.mapp-iw .mapp-links a {}
+/* Style links */
+.mapp-iw a:link, .mapp-iw a:visited{
+	color: #4272db !important;
+	text-decoration: none !important;
+}
+
+.mapp-iw a:hover{
+	color:#4272db !important;
+	text-decoration:underline !important;
+}
 
 /*
 	-----------------------------------------------------------------------------------
@@ -160,7 +173,7 @@
 	-webkit-box-shadow: 5px 5px 5px #888;
 	box-shadow: 5px 5px 5px #888;
 	display: none;
-	max-width: 450px;
+	max-width: 550px;
 	min-width: 200px;
 	overflow: auto;
 	padding: 15px;

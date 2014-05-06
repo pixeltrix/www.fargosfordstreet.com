@@ -14,8 +14,8 @@
 }
 
 .mapp-m-map-list {
-	width: 100%; 
-	height: 100%; 
+	width: 100%;
+	height: 100%;
 	margin-top: 5px;
 	overflow: auto;
 }
@@ -35,15 +35,15 @@ tr:hover > td > .mapp-m-actions {
 */
 
 .mapp-e-edit-panel {
-	border-top: 1px solid lightgray; 
+	border-top: 1px solid lightgray;
 	margin-top: 5px;
-	white-space:nowrap; 
+	white-space:nowrap;
 }
 
 table.mapp-e-editor {
 	border-collapse: collapse;
 	table-layout: fixed;
-	width: 100%;   
+	width: 100%;
 }
 
 .mapp-e-editor td {
@@ -54,13 +54,13 @@ table.mapp-e-editor {
 	font-size: 12px;
 	height: 20px;
 }
-	
+
 .mapp-e-canvas {
 	width: 100%;
 	min-height: 200px;
 	border: 1px solid lightgray;
 }
-	
+
 .mapp-e-poi-list {
 	cursor: move;
 	height: 370px;
@@ -76,7 +76,7 @@ table.mapp-e-editor {
 }
 
 .mapp-e-poi-list tr:nth-of-type(odd) {
-	background-color: rgb(252, 252, 252);    
+	background-color: rgb(252, 252, 252);
 }
 
 .mapp-e-actions {
@@ -95,8 +95,8 @@ tr:hover > td > .mapp-e-actions {
 }
 
 .mapp-e-infobox {
-	width: 425px;
-	height: 300px;
+	width: 475px;
+	height: 325px;
 }
 
 #mapp_e_poi_title {
@@ -106,13 +106,18 @@ tr:hover > td > .mapp-e-actions {
 
 /* Body as a textarea - also hard-coded into tinymce init */
 #mapp_e_poi_body {
-	width: 400px;
+	width: 100%;
 	height:175px;
 }
 
 /* Links for visual / html tinymce - for some reason the cursor is not set correctly */
 #mapp_e_visual, #mapp_e_html {
 	cursor: pointer;
+}
+
+/* Border around tinyMCE editor (WP removes it).  mceLayout is for WP < 3.9 */
+.mapp-e-infobox .mce-panel, .mapp-e-infobox table.mceLayout {
+	border: 1px solid lightgray !important;
 }
 
 #mapp_e_poi_kml_url {
@@ -161,7 +166,7 @@ tr:hover > td > .mapp-e-actions {
 }
 
 .mapp-icon-picker li {
-	border: 2px solid white;	
+	border: 2px solid white;
 	display: inline-block;
 	user-select: none;
 	margin: 0px;

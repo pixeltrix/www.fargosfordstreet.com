@@ -41,11 +41,13 @@ class Mappress_Map extends Mappress_Obj {
 		}
 
 		// Set default size if no width/height specified
-		if (!$this->width && !$this->height) {
+		if (!$this->width || !$this->height) {
 			$i = (int) $this->options->size;
-			$size = Mappress::$options->sizes[$i];
-			$this->width = $size['width'];
-			$this->height = $size['height'];
+			if (isset(Mappress::$options->sizes[$i])) {
+				$size = Mappress::$options->sizes[$i];
+				$this->width = ($this->width) ? $this->width : $size['width'];
+				$this->height = ($this->height) ? $this->height : $size['height'];
+			}
 		}
 
 		// Default title
@@ -71,14 +73,16 @@ class Mappress_Map extends Mappress_Obj {
 
 		$wpdb->show_errors(true);
 
-		if ($wpdb->get_var("show tables like '$maps_table'") != $maps_table) {
+		$exists = $wpdb->get_var("show tables like '$maps_table'");
+		if (!$exists) {
 			$result = $wpdb->query ("CREATE TABLE $maps_table (
 									mapid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 									obj LONGTEXT)
 									CHARACTER SET utf8;");
 		}
 
-		if ($wpdb->get_var("show tables like '$posts_table'") != $posts_table) {
+		$exists = $wpdb->get_var("show tables like '$posts_table'");
+		if (!$exists) {
 			$result = $wpdb->query ("CREATE TABLE $posts_table (
 									postid INT,
 									mapid INT,
@@ -221,7 +225,7 @@ class Mappress_Map extends Mappress_Obj {
 	*
 	* @param mixed $mapid
 	*/
-	function delete($mapid) {
+	static function delete($mapid) {
 		global $wpdb;
 		$maps_table = $wpdb->prefix . 'mappress_maps';
 		$posts_table = $wpdb->prefix . 'mappress_posts';
@@ -452,16 +456,16 @@ class Mappress_Map extends Mappress_Obj {
 		$style = '';
 
 		$border = $this->options->border;
-		if ($border['style']) {
+		if (isset($border['style']) && $border['style']) {
 			$style .= sprintf("border: %spx %s %s; ", $border['width'], $border['style'], $border['color']);
 
 			if (isset($border['radius']) && $border['radius']) {
 				$radius = $border['radius'] . 'px';
-				$style .= " border-radius: $radius; -moz-border-radius: $radius; -webkit-border-radius: $radius; -o-border-radius:$radius ";
+				$style .= " border-radius: $radius; -moz-border-radius: $radius; -webkit-border-radius: $radius; -o-border-radius:$radius; ";
 			}
 		}
 
-		if ($border['shadow'])
+		if (isset($border['shadow']) && $border['shadow'])
 			$style .= " -moz-box-shadow: 10px 10px 5px #888; -webkit-box-shadow: 10px 10px 5px #888; box-shadow: 10px 10px 5px #888;";
 
 		return $style;

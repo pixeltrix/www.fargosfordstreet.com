@@ -38,7 +38,7 @@
 
 		<div>
 			<a id="mapp_e_visual"><?php _e('Visual', 'mappress'); ?></a> | <a id="mapp_e_html"><?php _e('HTML', 'mappress');?></a>
-			<textarea id='mapp_e_poi_body' class='mapp-e-poi-body' rows='10' style='width:99%'></textarea>
+			<textarea id='mapp_e_poi_body' class='mapp-e-poi-body' rows='10'></textarea>
 		</div>
 
 		<div>

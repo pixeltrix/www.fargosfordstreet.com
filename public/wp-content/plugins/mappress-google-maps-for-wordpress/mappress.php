@@ -4,7 +4,7 @@ Plugin Name: MapPress Easy Google Maps
 Plugin URI: http://www.wphostreviews.com/mappress
 Author URI: http://www.wphostreviews.com/mappress
 Description: MapPress makes it easy to insert Google Maps in WordPress posts and pages.
-Version: 2.40.7
+Version: 2.42.1
 Author: Chris Richardson
 Thanks to all the translators and to Matthias Stasiak for his wonderful icons (http://code.google.com/p/google-maps-icons/)
 */
@@ -29,7 +29,7 @@ Thanks to all the translators and to Matthias Stasiak for his wonderful icons (h
 @include_once dirname( __FILE__ ) . '/pro/mappress_widget.php';
 
 class Mappress {
-	const VERSION = '2.40.7';
+	const VERSION = '2.42.1';
 
 	static
 		$baseurl,
@@ -256,13 +256,12 @@ class Mappress {
 		wp_enqueue_style('mappress', self::$baseurl . '/css/mappress.css', null, self::VERSION);
 
 		// If a 'mappress.css' exists in the theme directory, load that afterwards
-		$file = "";
 		if ( @file_exists( get_stylesheet_directory() . '/mappress.css' ) )
 			$file = get_stylesheet_directory_uri() . '/mappress.css';
 		elseif ( @file_exists( get_template_directory() . '/mappress.css' ) )
 			$file = get_template_directory_uri() . '/mappress.css';
 
-		if ($file)
+		if (isset($file))
 			wp_enqueue_style('mappress-custom', $file, array('mappress'), self::VERSION);
 	}
 
@@ -328,9 +327,9 @@ class Mappress {
 		$error =  "<div id='error' class='error'><p>%s</p></div>";
 
 		$map_table = $wpdb->prefix . "mappress_maps";
-		$result = $wpdb->get_var("show tables like '$map_table'");
+		$exists = $wpdb->get_var("show tables like '$map_table'");
 
-		if (strtolower($result) != strtolower($map_table)) {
+		if (!$exists) {
 			echo sprintf($error, __("MapPress database tables are missing.  Please deactivate the plugin and activate it again to fix this.", 'mappress'));
 			return;
 		}
@@ -378,6 +377,12 @@ class Mappress {
 				$atts['center'] = array('lat' => $latlng[0], 'lng' => $latlng[1]);
 			else
 				unset($atts['center']);
+		}
+
+		// Back-compat for initialOpenDirections: convert to 'to'
+		if (isset($atts['initialopendirections']) && !is_bool($atts['initialopendirections']) && !isset($atts['to'])) {
+			$atts['to'] = $atts['initialopendirections'];
+			$atts['initialopendirections'] = true;
 		}
 
 		// MapTypeIds
@@ -455,7 +460,7 @@ class Mappress {
 			$this->print_map_styles();
 
 		if (isset($this->queue['editor'])) {
-			$script = "var mappMedia = new mapp.Media();";
+			$script = "window.mappEditor = new mapp.Media();";
 			echo Mappress::script($script);
 			return;
 		}
@@ -469,7 +474,7 @@ class Mappress {
 
 			// Workaround for Nextgen plugin, which reverses sequence of wp_enqueue_scripts and wp_print_footer_scripts output
 			if ((self::$options->onLoad) || class_exists('C_Photocrati_Resource_Manager'))
-				$script = "jQuery(document).ready(function () { $script; });";
+				$script = "jQuery(document).ready(function () { $script });";
 
 			echo Mappress::script($script);
 		}
@@ -574,7 +579,8 @@ class Mappress {
 			'ajaxErrors' => is_super_admin() || Mappress::$debug,
 			'baseurl' => Mappress::$baseurl,
 			'defaultIcon' => Mappress::$options->defaultIcon,
-			'postid' => ($post) ? $post->ID : null
+			'postid' => ($post) ? $post->ID : null,
+			'siteUrl' => site_url()
 		));
 
 		return $l10n;

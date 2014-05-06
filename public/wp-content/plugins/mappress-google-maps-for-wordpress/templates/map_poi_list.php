@@ -18,7 +18,7 @@
 				<div>
 					<?php echo $poi->get_links('poi_list'); ?>
 				</div>
-			</td>    
+			</td>
 		</tr>
 	<?php endforeach; ?>
 	</tbody>

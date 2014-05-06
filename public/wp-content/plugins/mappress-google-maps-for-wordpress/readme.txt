@@ -1,10 +1,10 @@
-﻿=== MapPress Easy Google Maps ===
+=== MapPress Easy Google Maps ===
 Contributors: chrisvrichardson
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4339298
 Tags: google maps,google,map,maps,easy,poi,mapping,mapper,gps,lat,lon,latitude,longitude,geocoder,geocoding,georss,geo rss,geo,v3,marker,mashup,mash,api,v3,buddypress,mashup,geo,wp-geo,geo mashup,simplemap,simple,wpml
-Requires at least: 3.3
-Tested up to: 3.5
-Stable tag: 2.40.7
+Requires at least: 3.5
+Tested up to: 3.9
+Stable tag: 2.42.1
 
 MapPress is the most popular and easiest way to create great-looking Google Maps and driving directions in your blog.
 
@@ -52,20 +52,21 @@ For even more features, try the [MapPress Pro Version](http://wphostreviews.com/
 6. Street view of mashup location
 
 = Localization =
-Please [Contact me](http://wphostreviews.com/chris-contact) if you'd like to provide a translation or an update.  Special thanks to:
+Please [Contact me](http://wphostreviews.com/chris-contact) if you'd like to provide a translation or an update.  Special thanks to all the folks who created and udpated these translations:
 
-* Chinese / Taiwanese - Y.Chen
-* Croatian - Vinko P.
-* Dutch	- Wouter K., Age
-* Finnish - Jaakko K.
-* French - Sylvain C. and Jérôme
-* German - Stefan S., Stevie, Mike B.
-* Hungarian - Németh B.
-* Italian - Gianni D.
-* Russian - Alexander C.
-* Simplified Chinese - Yiwei
-* Spanish - Seymour
-* Swedish - Mikael N.
+* Catalan
+* Chinese / Taiwanese
+* Croatian
+* Dutch
+* Finnish
+* French
+* German
+* Hungarian
+* Italian
+* Russian
+* Simplified Chinese
+* Spanish
+* Swedish
 
 == Installation ==
 
@@ -93,7 +94,49 @@ See full [installation intructions and Documentation](http://www.wphostreviews.c
 
 == Changelog ==
 
-The fulll MapPress change log available here: [Change Log](http://wphostreviews.com/mappress-changelog)
+2.42.1
+=
+* Changed: wider editor infobox for Chrome and WP 3.9
+* Fixed: removed warning about border style
+* Fixed: removed !important modifier from mapp-iw styles for font weight
+
+2.42
+=
+* Added: compatibiliy for TinyMCE 4.x in WordPress 3.9+
+* Changed: geocoding calls from PHP now use http instead of https to prevent curl errors
+* Changed: updated Spanish translation, thanks to Agustin
+* Fixed: tinyMCE icons in WordPress 3.8+
+
+2.41.1
+=
+* Added: polyline and polygon vertices can now be deleted by right-clicking
+* Fixed: Mappress_Map::delete is now declared static to prevent warning messages
+
+2.41
+=
+* Fixed: warning message in save_post action if WordPress is in debug mode and no post ID is provided
+
+2.40.9
+=
+* Changed: infowindow scrollbar fix is updated and can now be turned off in settings
+* Changed: removed $poi->get_post() method
+* Changed: CSS for infowindow (.mapp-iw)
+* Fixed: use default height for mashups with width but no height
+
+2.40.8
+=
+* Added: workaround for Google infoWindow sizing bug
+* Added: shortcode parameters 'from' and 'to' can be used to set a default for all directions.  Use a string or POI number, for example [mappress from="2"] or [mappress from="Mountain View, CA"]
+* Fixed: layout style was incorrect if map layout had rounded corners; this also prevented show="hidden" from working.
+* Fixed: filter 'mappress_poi_iconid' was being called as 'mapress_poi_iconid' (with one 'p' instead of two)
+* Fixed: Google CSS made copyright appear vertical in IE in some themes
+* Fixed: Google bug with sizing infoWindows
+* Changed: updated Italian translation, thanks to Reberto
+* Changed: when dragging a marker originally entered by address, it will keep the address for directions instead of showing the lat/lng coordinates.
+* Changed: no check for an active post for the mashup shortcode, to allow mashups on search results pages
+* Changed: directions now appear -above- the poi list in the standard template 'layout.php'
+* Changed: if option mashupClick="post", the plugin redirects using 'siteurl/?p=1234' instead of the permalink (which speeds up queries)
+* Changed: initialopendirections is now a boolean: set it to 'true' or 'false'.
 
 2.40.7
 =
