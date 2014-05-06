@@ -5,8 +5,8 @@ Author URI: http://mitcho.com/code/
 Donate link: http://tinyurl.com/donatetomitcho
 Tags: redirect, alias, custom field, URL
 Requires at least: 3.1
-Tested up to: 3.5
-Stable tag: 0.9
+Tested up to: 3.8
+Stable tag: 1.0
 
 Changes the URLs pointing to pages and posts which have a "redirect" custom field, using that entry as the URL instead.
 
@@ -24,9 +24,12 @@ Development of this plugin was supported by the [Arts at MIT](http://arts.mit.ed
 
 == Frequently Asked Questions ==
 
-If your question isn't here, ask your own question at [the Wordpress.org forums](http://wordpress.org/tags/redirect-by-custom-field?forum_id=10#postform). *Please do not email or tweet with questions.*
+If your question isn't here, ask your own question at [the WordPress.org forums](http://wordpress.org/tags/redirect-by-custom-field?forum_id=10#postform). *Please do not email or tweet with questions.*
 
 == Changelog ==
+
+= 1.0 =
+* Added new "hide redirects" filter in the list of posts/pages.
 
 = 0.9 =
 * New placeholder function:
