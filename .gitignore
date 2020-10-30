@@ -1,6 +1,1 @@
-Capfile
-public/.htaccess
-public/wp-config.php
-public/wp-content/uploads
-REVISION
-tmp
+/_site/*

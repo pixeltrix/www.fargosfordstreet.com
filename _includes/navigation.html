@@ -1,0 +1,47 @@
+<ul class="menu">
+  {% if page.current_tab == 'yesterday' %}
+  <li class="menu-item current-menu-item"><a href="/yesterday/">Yesterday</a>
+  {% else %}
+  <li class="menu-item"><a href="/yesterday/">Yesterday</a>
+  {% endif %}
+    <ul class="sub-menu">
+      <li><a href="/yesterday/birth-of-a-street/">Birth of a Street</a></li>
+      <li><a href="/yesterday/development-of-a-street/">Development of a Street</a></li>
+      <li><a href="/yesterday/historic-buildings/">Historic Buildings</a></li>
+      <li><a href="/yesterday/living-on-the-street/">Living on the Street</a></li>
+      <li><a href="/yesterday/archaeology/">Archaeology</a></li>
+      <li><a href="/yesterday/timeline/">Timeline</a></li>
+    </ul>
+  </li>
+  {% if page.current_tab == 'today' %}
+  <li class="menu-item current-menu-item"><a href="/today/">Today</a>
+  {% else %}
+  <li class="menu-item"><a href="/today/">Today</a>
+  {% endif %}
+    <ul class="sub-menu">
+      <li><a href="/today/before-and-after/">Before &#038; After</a></li>
+      <li><a href="/today/community/">Community</a></li>
+      <li><a href="/today/business/">Business</a></li>
+      <li><a href="/today/fargo-faces/">Fargo Faces</a></li>
+    </ul>
+  </li>
+  {% if page.current_tab == 'tomorrow' %}
+  <li class="menu-item current-menu-item"><a href="/tomorrow/">Tomorrow</a>
+  {% else %}
+  <li class="menu-item"><a href="/tomorrow/">Tomorrow</a>
+  {% endif %}
+    <ul class="sub-menu">
+      <li><a href="https://www.fargovillage.co.uk/">Fargo Village</a></li>
+      <li><a href="/tomorrow/retail/">Retail</a></li>
+      <li><a href="/tomorrow/city-living/">City Living</a></li>
+      <li><a href="/tomorrow/hotel/">Hotel</a></li>
+      <li><a href="/tomorrow/business/">Business</a></li>
+      <li><a href="/tomorrow/leisure/">Leisure</a></li>
+    </ul>
+  </li>
+  {% if page.current_tab == 'contact' %}
+    <li class="menu-item current-menu-item"><a href="/contact/">Contact</a></li>
+  {% else %}
+    <li class="menu-item"><a href="/contact/">Contact</a></li>
+  {% endif %}
+</ul>

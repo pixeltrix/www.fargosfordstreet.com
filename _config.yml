@@ -1,0 +1,7 @@
+title: Far Gosford Street
+url: https://www.fargosfordstreet.com
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CNAME

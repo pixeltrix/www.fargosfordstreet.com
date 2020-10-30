@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+  {% include head.html %}
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="header" class="container">
+      <h1 id="site-title"><a href="/" title="Far Gosford Street" rel="home">Far Gosford Street</a></h1>
+    </div>
+    <div id="navigation" class="container">
+      {% include navigation.html %}
+    </div>
+    <div id="content">
+      {{ content }}
+    </div>
+    <div id="footer">
+      {% include footer.html %}
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+  {% include head.html %}
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="header" class="container">
+      <h1 id="site-title"><a href="/" title="Far Gosford Street" rel="home">Far Gosford Street</a></h1>
+    </div>
+    <div id="navigation" class="container">
+      {% include navigation.html %}
+    </div>
+    <div id="content">
+      <h2 class="page-title">
+        <a href="/">Home</a> »
+        {% if page.current_tab == 'yesterday' and page.dir != '/yesterday/' %}
+          <a href="/yesterday/">Yesterday</a> »
+        {% endif %}
+        {% if page.current_tab == 'today' and page.dir != '/today/' %}
+          <a href="/today/">Today</a> »
+        {% endif %}
+        {% if page.current_tab == 'tomorrow' and page.dir != '/tomorrow/' %}
+          <a href="/tomorrow/">Tomorrow</a> »
+        {% endif %}
+        {{ page.title }}
+      </h2>
+
+      <div class="columns">
+        <div class="column span_4">
+          {% if page.current_tab == 'yesterday' %}
+            {% include yesterday.html %}
+          {% elsif page.current_tab == 'today'  %}
+            {% include today.html %}
+          {% elsif page.current_tab == 'tomorrow'  %}
+            {% include tomorrow.html %}
+          {% endif %}
+        </div>
+        <div class="column span_8">
+          {{ content }}
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      {% include footer.html %}
+    </div>
+  </div>
+</body>
+</html>
